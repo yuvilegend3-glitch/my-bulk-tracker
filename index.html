@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bulk Tracker">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>My Bulk Tracker</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d2e;--panel2:#18263a;--line:#26364d;--text:#eef4ff;--muted:#9aabc2;--accent:#8be0b0;--accent2:#6cc6ff;--warn:#ffd27a;--danger:#ff8f9b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#172842 0,#0b1220 52%);color:var(--text);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 14px env(safe-area-inset-bottom)}
+main{max-width:900px;margin:auto;padding:18px 0 42px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:10px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#102033;font-weight:900;font-size:22px}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}h1{font-size:23px;line-height:1.1;margin:2px 0;font-weight:800}h2{font-size:17px;margin:0 0 12px}h3{font-size:15px;margin:0}.date{color:var(--muted);font-size:12px;text-align:right}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.card{background:linear-gradient(145deg,rgba(22,34,52,.97),rgba(15,25,40,.97));border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 12px 30px #0002}.span12{grid-column:span 12}.span8{grid-column:span 8}.span4{grid-column:span 4}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:12px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:21px;display:block;margin-top:3px}.stat em{font-style:normal;color:var(--muted);font-size:11px}.progress{height:8px;background:#26364a;border-radius:20px;overflow:hidden;margin-top:9px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:20px;width:0;transition:width .25s}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;white-space:nowrap}.meal{border:1px solid var(--line);background:#111c2c;border-radius:15px;padding:13px;margin:9px 0}.meal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.meal-info{display:flex;gap:10px;align-items:flex-start}.meal-icon{width:36px;height:36px;border-radius:12px;background:#20334a;display:grid;place-items:center;font-size:18px;flex-shrink:0}.meal-name{font-weight:750}.meal-time{color:var(--muted);font-size:12px}.meal-desc{font-size:12px;color:#b6c5d9;margin:8px 0}.meal-meta{display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--muted)}.actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:10px}.btn{border:1px solid var(--line);background:#203047;color:var(--text);border-radius:11px;padding:9px 12px;font-weight:700;font-size:12px;cursor:pointer}.btn.primary{background:var(--accent);border-color:var(--accent);color:#0b1a17}.btn.ghost{background:transparent}.btn.done{background:#163a2c;border-color:#2b7652;color:#a8f0c7}.btn.small{padding:6px 9px;font-size:11px}.btn:active{transform:scale(.98)}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field label{font-size:11px;color:var(--muted)}input,select,textarea{width:100%;background:#0c1625;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;min-width:0}input[type=number]{appearance:textfield}input:focus,select:focus{outline:1px solid var(--accent2)}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.formgrid .wide{grid-column:1/-1}.weightrow{display:flex;gap:8px}.weightrow input{flex:1}.history{display:flex;flex-direction:column;gap:8px}.historyrow{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#101b2b}.historyrow small{color:var(--muted)}.empty{color:var(--muted);font-size:13px;padding:8px 0}.footer{color:var(--muted);font-size:11px;text-align:center;margin-top:18px}.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#eafcf2;color:#123326;padding:11px 16px;border-radius:14px;font-weight:700;box-shadow:0 8px 30px #0005;z-index:5;display:none;max-width:90%;text-align:center}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:8px 12px;font-weight:700;font-size:12px}.tab.active{background:var(--accent);color:#102219;border-color:var(--accent)}.hidden{display:none!important}.note{font-size:12px;color:var(--muted);margin-top:8px}.checkline{display:flex;align-items:center;gap:9px;font-size:13px}.checkline input{width:auto}.macrobar{display:flex;height:7px;border-radius:99px;overflow:hidden;background:#26364a;margin:10px 0}.macrobar span:nth-child(1){background:#8be0b0}.macrobar span:nth-child(2){background:#6cc6ff}.macrobar span:nth-child(3){background:#ffd27a}
+@media(max-width:650px){.span8,.span4{grid-column:span 12}.top{align-items:flex-start}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:18px}.card{padding:13px}.formgrid{grid-template-columns:1fr 1fr}.meal-top{align-items:flex-start}.date{max-width:100px}}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+  <div class="brand"><div class="logo">+</div><div><div class="eyebrow">Nutrition & progress</div><h1>My Bulk Tracker</h1></div></div>
+  <div class="date" id="todayLabel"></div>
+</header>
+<div class="grid">
+<section class="card span12">
+  <div class="sectionhead"><div><div class="eyebrow">Your first milestone</div><h2>Build toward 65 kg</h2></div><span class="pill" id="dayBadge">Day 1</span></div>
+  <div class="stats">
+    <div class="stat"><small>Current weight</small><strong id="currentWeight">60.0 <em>kg</em></strong><em id="weightDelta">Starting point</em></div>
+    <div class="stat"><small>Target weight</small><strong>65.0 <em>kg</em></strong><em>First milestone</em></div>
+    <div class="stat"><small>Remaining</small><strong id="remaining">5.0 <em>kg</em></strong><em>Gradual gain</em></div>
+  </div>
+  <div class="progress"><span id="weightProgress"></span></div>
+  <div class="note">Aim for steady progress. Your weight can fluctuate day to day; compare weekly averages rather than single readings.</div>
+</section>
+
+<section class="card span8">
+  <div class="sectionhead"><h2>Today's nutrition</h2><span class="pill" id="mealCount">0 / 5 meals</span></div>
+  <div class="stats">
+    <div class="stat"><small>Calories</small><strong><span id="calories">0</span></strong><em>of <span id="calGoal">2,750</span> kcal</em><div class="progress"><span id="calProgress"></span></div></div>
+    <div class="stat"><small>Protein</small><strong><span id="protein">0</span><em> g</em></strong><em>of <span id="proteinGoal">120</span> g</em><div class="progress"><span id="proteinProgress"></span></div></div>
+    <div class="stat"><small>Meals done</small><strong id="doneCount">0</strong><em>of 5 planned</em><div class="progress"><span id="mealProgress"></span></div></div>
+  </div>
+  <div class="macrobar"><span id="carbBar" style="width:0"></span><span id="proteinBar" style="width:0"></span><span id="fatBar" style="width:0"></span></div>
+  <div class="note" id="macroSummary">Carbs • Protein • Fat</div>
+</section>
+
+<section class="card span4">
+  <div class="sectionhead"><h2>Log today's weight</h2></div>
+  <div class="weightrow"><input id="weightInput" type="number" inputmode="decimal" min="20" max="300" step="0.1" placeholder="kg"><button class="btn primary" id="saveWeight">Save</button></div>
+  <div class="note">Weigh in under similar conditions, ideally after waking and using the bathroom.</div>
+  <div class="actions"><button class="btn ghost small" id="newDay">Finish day & start next</button><button class="btn ghost small" id="exportData">Export backup</button><label class="btn ghost small" for="importFile">Import backup</label><input id="importFile" type="file" accept="application/json" hidden></div>
+</section>
+
+<section class="card span12">
+  <div class="sectionhead"><h2>Today's meal plan</h2><button class="btn ghost small" id="editPlan">Edit plan</button></div>
+  <div id="mealList"></div>
+</section>
+
+<section class="card span8">
+  <div class="sectionhead"><h2>Progress history</h2><span class="pill" id="historyCount">0 records</span></div>
+  <div class="tabs"><button class="tab active" data-tab="weights">Weight</button><button class="tab" data-tab="days">Daily logs</button></div>
+  <div id="weightHistory" class="history"></div>
+  <div id="dayHistory" class="history hidden"></div>
+</section>
+
+<section class="card span4">
+  <div class="sectionhead"><h2>Daily targets</h2></div>
+  <div class="formgrid">
+    <div class="field"><label for="calTarget">Calories (kcal)</label><input id="calTarget" type="number" min="1000" max="6000"></div>
+    <div class="field"><label for="proteinTarget">Protein (g)</label><input id="proteinTarget" type="number" min="30" max="300"></div>
+    <div class="field"><label for="goalWeight">Milestone (kg)</label><input id="goalWeight" type="number" min="30" max="200" step=".1"></div>
+    <div class="field"><label for="reminderToggle">Reminders</label><select id="reminderToggle"><option value="off">Off</option><option value="on">On</option></select></div>
+    <div class="field wide"><button class="btn primary" id="saveTargets">Save targets & reminders</button></div>
+  </div>
+  <div class="note">Meal reminders use browser notifications. Install this app on your iPhone Home Screen and allow notifications. Reminder scheduling is handled by the app while it is active; iOS may restrict background web notifications.</div>
+</section>
+<section class="card span12 hidden" id="editCard">
+  <div class="sectionhead"><h2>Edit meal plan</h2><button class="btn ghost small" id="closeEdit">Close</button></div>
+  <div id="editMeals"></div>
+  <div class="actions"><button class="btn primary" id="saveMeals">Save meal plan</button><button class="btn ghost" id="resetMeals">Restore starter plan</button></div>
+</section>
+</div>
+<div class="footer">Your data stays in this browser on this device. Export a backup regularly. Nutrition values are estimates and depend on ingredients and portion sizes.</div>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const DEFAULT_MEALS = [
+ {id:"breakfast",name:"Breakfast",time:"08:00",icon:"🥣",description:"80 g oats, 300 ml whole milk, 1 banana, 1 tbsp peanut butter",cal:700,protein:25,carbs:93,fat:25},
+ {id:"lunch",name:"Lunch",time:"13:00",icon:"🍛",description:"3 rotis, 100 g paneer, 1 bowl dal, curd, vegetables",cal:850,protein:40,carbs:95,fat:30},
+ {id:"snack",name:"Pre-workout snack",time:"16:30",icon:"🍌",description:"2 boiled eggs and 1 banana",cal:250,protein:13,carbs:28,fat:10},
+ {id:"dinner",name:"Dinner / post-workout",time:"19:30",icon:"🍚",description:"250 g cooked rice, 50 g dry soy chunks, vegetables, 1 tsp oil",cal:650,protein:33,carbs:95,fat:12},
+ {id:"evening",name:"Evening snack",time:"21:30",icon:"🥛",description:"250 ml milk, 2 dates, 15 g almonds",cal:300,protein:11,carbs:35,fat:14}
+];
+const $=id=>document.getElementById(id);
+const realDateKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+let activeDate=realDateKey();
+const dateKey=()=>activeDate;
+const prettyDate=s=>new Date(s+"T12:00:00").toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric",year:"numeric"});
+const load=()=>{try{return JSON.parse(localStorage.getItem("bulkTrackerData"))||{}}catch{return {}}};
+let data=load();
+function init(){
+ data.settings ||= {calTarget:2750,proteinTarget:120,goalWeight:65,reminders:"off"};
+ data.meals ||= structuredClone(DEFAULT_MEALS);
+ data.days ||= {};
+ data.weights ||= [];
+ data.dayNumber ||= 1;
+ const key=dateKey();
+ data.days[key] ||= {dayNumber:data.dayNumber,done:{},weight:null};
+ save(); $("todayLabel").textContent=prettyDate(key); render();
+}
+function save(){localStorage.setItem("bulkTrackerData",JSON.stringify(data))}
+function current(){return data.days[dateKey()]}
+function totals(){let c=0,p=0,carb=0,fat=0,n=0;data.meals.forEach(m=>{if(current().done[m.id]){c+=+m.cal;p+=+m.protein;carb+=+m.carbs;fat+=+m.fat;n++}});return {c,p,carb,fat,n}}
+function render(){
+ const t=totals(),s=data.settings,goal=+s.goalWeight||65,w=current().weight ?? (data.weights.length?data.weights[data.weights.length-1].weight:60);
+ $("dayBadge").textContent=`Day ${current().dayNumber||data.dayNumber}`;
+ $("currentWeight").innerHTML=`${(+w).toFixed(1)} <em>kg</em>`;
+ $("remaining").innerHTML=`${Math.max(0,goal-w).toFixed(1)} <em>kg</em>`;
+ $("weightProgress").style.width=`${Math.max(0,Math.min(100,(w-60)/(goal-60||1)*100))}%`;
+ $("weightDelta").textContent=w>=goal?"Milestone reached!":`${(w-60>=0?"+":"")}${(w-60).toFixed(1)} kg from start`;
+ $("calories").textContent=Math.round(t.c).toLocaleString();$("protein").textContent=Math.round(t.p);
+ $("calGoal").textContent=(+s.calTarget).toLocaleString();$("proteinGoal").textContent=s.proteinTarget;
+ $("calProgress").style.width=`${Math.min(100,t.c/s.calTarget*100)}%`;$("proteinProgress").style.width=`${Math.min(100,t.p/s.proteinTarget*100)}%`;
+ $("doneCount").textContent=t.n;$("mealCount").textContent=`${t.n} / ${data.meals.length} meals`;
+ $("mealProgress").style.width=`${t.n/data.meals.length*100}%`;
+ const macro=t.carb+t.p+t.fat||1;$("carbBar").style.width=`${t.carb/macro*100}%`;$("proteinBar").style.width=`${t.p/macro*100}%`;$("fatBar").style.width=`${t.fat/macro*100}%`;
+ $("macroSummary").textContent=`Carbs ${Math.round(t.carb)} g • Protein ${Math.round(t.p)} g • Fat ${Math.round(t.fat)} g`;
+ $("mealList").innerHTML=data.meals.map(m=>`<div class="meal"><div class="meal-top"><div class="meal-info"><div class="meal-icon">${esc(m.icon||"🍽️")}</div><div><div class="meal-name">${esc(m.name)}</div><div class="meal-time">${esc(m.time)}${current().done[m.id]?" • Completed":""}</div></div><button class="btn ${current().done[m.id]?"done":"primary"} small" data-done="${m.id}">${current().done[m.id]?"✓ Eaten":"Mark eaten"}</button></div><div class="meal-desc">${esc(m.description)}</div><div class="meal-meta"><span>${m.cal} kcal</span><span>${m.protein} g protein</span><span>${m.carbs} g carbs</span><span>${m.fat} g fat</span></div></div>`).join("");
+ document.querySelectorAll("[data-done]").forEach(b=>b.onclick=()=>{const id=b.dataset.done;current().done[id]=!current().done[id];save();render();});
+ $("calTarget").value=s.calTarget;$("proteinTarget").value=s.proteinTarget;$("goalWeight").value=s.goalWeight;$("reminderToggle").value=s.reminders;
+ $("weightHistory").innerHTML=data.weights.slice().reverse().map(x=>`<div class="historyrow"><div><strong>${(+x.weight).toFixed(1)} kg</strong><br><small>${prettyDate(x.date)}</small></div><small>${x.note?esc(x.note):""}</small></div>`).join("")||'<div class="empty">No weigh-ins yet. Save your first weight above.</div>';
+ const records=Object.entries(data.days).sort((a,b)=>b[0].localeCompare(a[0]));
+ $("historyCount").textContent=`${data.weights.length} weigh-ins • ${records.length} days`;
+ $("dayHistory").innerHTML=records.map(([d,v])=>{const done=Object.values(v.done||{}).filter(Boolean).length;return `<div class="historyrow"><div><strong>${prettyDate(d)}</strong><br><small>Day ${v.dayNumber||"—"} • ${done}/${data.meals.length} meals</small></div><strong>${v.weight?Number(v.weight).toFixed(1)+" kg":"—"}</strong></div>`}).join("")||'<div class="empty">Daily records will appear here.</div>';
+}
+function esc(x){return String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("saveWeight").onclick=()=>{let w=parseFloat($("weightInput").value);if(!w||w<20||w>300){toast("Enter a valid weight in kg.");return}current().weight=w;data.weights.push({date:dateKey(),weight:w});save();$("weightInput").value="";render();toast("Weight saved.");};
+$("newDay").onclick=()=>{if(!confirm("Finish today and start the next day? Today's meal and weight record will be kept."))return;data.dayNumber=(current().dayNumber||data.dayNumber)+1;const next=new Date(activeDate+"T12:00:00");next.setDate(next.getDate()+1);activeDate=`${next.getFullYear()}-${String(next.getMonth()+1).padStart(2,"0")}-${String(next.getDate()).padStart(2,"0")}`;data.days[activeDate] ||= {dayNumber:data.dayNumber,done:{},weight:null};save();$("todayLabel").textContent=prettyDate(activeDate);render();toast("Next day started.");};
+$("exportData").onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=`bulk-tracker-backup-${dateKey()}.json`;a.click();URL.revokeObjectURL(url);toast("Backup exported.");};
+$("importFile").onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const imported=JSON.parse(await file.text());if(!imported||!imported.days||!imported.settings)throw new Error("Invalid backup");if(!confirm("Import this backup and replace the data currently stored on this device?"))return;data=imported;save();init();toast("Backup imported.");}catch{toast("Could not import this backup file.");}e.target.value="";};
+$("saveTargets").onclick=async()=>{data.settings.calTarget=Math.max(1000,+$("calTarget").value||2750);data.settings.proteinTarget=Math.max(30,+$("proteinTarget").value||120);data.settings.goalWeight=Math.max(30,+$("goalWeight").value||65);data.settings.reminders=$("reminderToggle").value;if(data.settings.reminders==="on"){if(!("Notification"in window)){toast("Notifications are not supported in this browser.");data.settings.reminders="off"}else{const perm=await Notification.requestPermission();if(perm!=="granted"){data.settings.reminders="off";toast("Notifications not allowed. Enable them in browser settings.")}else toast("Reminders enabled while the app is active.")}}save();render();};
+$("editPlan").onclick=()=>{$("editCard").classList.remove("hidden");renderEditor();};
+$("closeEdit").onclick=()=>$("editCard").classList.add("hidden");
+function renderEditor(){$("editMeals").innerHTML=data.meals.map((m,i)=>`<div class="meal"><div class="formgrid"><div class="field"><label>Name</label><input data-m="${i}" data-k="name" value="${esc(m.name)}"></div><div class="field"><label>Time</label><input type="time" data-m="${i}" data-k="time" value="${esc(m.time)}"></div><div class="field wide"><label>Food / portions</label><input data-m="${i}" data-k="description" value="${esc(m.description)}"></div><div class="field"><label>Calories</label><input type="number" data-m="${i}" data-k="cal" value="${m.cal}"></div><div class="field"><label>Protein (g)</label><input type="number" data-m="${i}" data-k="protein" value="${m.protein}"></div><div class="field"><label>Carbs (g)</label><input type="number" data-m="${i}" data-k="carbs" value="${m.carbs}"></div><div class="field"><label>Fat (g)</label><input type="number" data-m="${i}" data-k="fat" value="${m.fat}"></div></div></div>`).join("")}
+$("saveMeals").onclick=()=>{document.querySelectorAll("[data-m]").forEach(inp=>{const m=data.meals[+inp.dataset.m],k=inp.dataset.k;m[k]=["cal","protein","carbs","fat"].includes(k)?Math.max(0,+inp.value||0):inp.value});save();render();toast("Meal plan updated.");};
+$("resetMeals").onclick=()=>{if(confirm("Restore the original starter meal plan?")){data.meals=structuredClone(DEFAULT_MEALS);save();render();renderEditor();}};
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));$("weightHistory").classList.toggle("hidden",b.dataset.tab!=="weights");$("dayHistory").classList.toggle("hidden",b.dataset.tab!=="days")});
+let toastTimer;function toast(msg){const el=$("toast");el.textContent=msg;el.style.display="block";clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display="none",2600)}
+// While the page is open, check meal times once per minute and show a notification once per meal/day.
+setInterval(()=>{if(data.settings.reminders!=="on"||Notification.permission!=="granted")return;const now=new Date(),hm=`${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}`;data.meals.forEach(m=>{const marker=`${dateKey()}_${m.id}`;if(m.time===hm&&!current().done[m.id]&&data.lastNotice!==marker){new Notification(`${m.name} time`,{body:m.description,icon:"icon.svg"});data.lastNotice=marker;save()}})},60000);
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
+init();
+</script>
+</body>
+</html>
